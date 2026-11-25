@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "skills": {
+    "agent-harness": {
+      "source": "aws-samples/sample-kiro-harness-hive",
+      "commit": "24d987f9045c4f881fedef2ac8ae506bf68a80aa",
+      "sourceType": "github",
+      "skillPath": "skills/agent-harness/SKILL.md",
+      "computedHash": "27f598cf4496c0bd4b3c704ab0fe0229a11c4820af1e97a4964894a3a19723a2"
+    }
+  }
+}

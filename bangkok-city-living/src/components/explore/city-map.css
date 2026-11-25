@@ -1,0 +1,174 @@
+/*
+ * Marker roots are owned by MapLibre (.maplibregl-marker: absolute position + transform).
+ * Never set position, transform or display on them here: style the inner elements only,
+ * otherwise markers drift away from their coordinates when zooming.
+ */
+
+.bcl-hidden .bcl-inner {
+  display: none !important;
+}
+
+/* ---- Event pin: the tip of the pointer is the reported location */
+.bcl-pin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.45));
+}
+.bcl-pin .head {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #0b2a1f;
+  border: 2.5px solid var(--c);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.bcl-pin .head svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--c);
+}
+.bcl-pin .stem {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid var(--c);
+  margin-top: -1px;
+}
+.bcl-pin.fresh .head {
+  box-shadow: 0 0 0 4px rgba(246, 222, 80, 0.6);
+}
+.zlow .bcl-pin .head {
+  width: 22px;
+  height: 22px;
+}
+.zlow .bcl-pin .head svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* ---- Junction label, pointing at the junction */
+.bcl-junction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+.bcl-junction .chip {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  font: 700 11px/1.3 system-ui, -apple-system, 'Noto Sans Thai', 'Sukhumvit Set', sans-serif;
+  color: #fff;
+  background: rgba(8, 35, 26, 0.92);
+  border: 1.5px solid var(--c);
+  padding: 2px 7px 3px;
+  border-radius: 7px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+.bcl-junction .chip b {
+  color: var(--c);
+  font-variant-numeric: tabular-nums;
+}
+.bcl-junction .stem {
+  width: 2px;
+  height: 7px;
+  background: var(--c);
+}
+.zlow .bcl-junction .name {
+  display: none;
+}
+.bcl-junction.selected .chip {
+  background: #f6de50;
+  border-color: #f6de50;
+  color: #10231b;
+}
+.bcl-junction.selected .chip b {
+  color: #10231b;
+}
+
+/* ---- Where a jam starts and where it clears */
+.bcl-flag {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+.zmid .bcl-flag.selected,
+.zhigh .bcl-flag {
+  display: flex;
+}
+.bcl-flag .chip {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  white-space: nowrap;
+  font: 700 10px/1.3 system-ui, -apple-system, 'Noto Sans Thai', sans-serif;
+  padding: 2px 6px 2px 4px;
+  border-radius: 999px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+}
+.bcl-flag .chip svg {
+  width: 11px;
+  height: 11px;
+}
+.bcl-flag.start .chip {
+  background: #e83da8;
+  color: #fff;
+}
+.bcl-flag.start .chip svg {
+  fill: #fff;
+}
+.bcl-flag.clear .chip {
+  background: #00bf88;
+  color: #08231a;
+}
+.bcl-flag.clear .chip svg {
+  fill: #08231a;
+}
+.bcl-flag .dot {
+  width: 8px;
+  height: 8px;
+  margin-top: 2px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-sizing: border-box;
+}
+.bcl-flag.start .dot {
+  background: #e83da8;
+}
+.bcl-flag.clear .dot {
+  background: #00bf88;
+}
+
+/* ---- Popups */
+.bcl-pop h4 {
+  margin: 0 0 4px;
+  font: 700 13px/1.35 system-ui, -apple-system, 'Noto Sans Thai', sans-serif;
+  color: #10231b;
+}
+.bcl-pop p {
+  margin: 2px 0 0;
+  font: 500 12px/1.45 system-ui, -apple-system, 'Noto Sans Thai', sans-serif;
+  color: #4b6358;
+}
+.bcl-pop .tag {
+  display: inline-block;
+  margin-bottom: 4px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  font: 700 10px/1.6 system-ui, sans-serif;
+  color: #10231b;
+  background: var(--c);
+}
+.maplibregl-popup-content {
+  border-radius: 12px;
+  padding: 10px 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
